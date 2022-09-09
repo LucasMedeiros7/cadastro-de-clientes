@@ -8,7 +8,7 @@ import { PersonalInfo } from './PersonalInfo';
 import styles from './styles/Form.module.css';
 
 export function Form() {
-  const { useLocalStorage } = useContext(clientContext);
+  const { saveOnLocalStorage } = useContext(clientContext);
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
@@ -58,9 +58,9 @@ export function Form() {
   }
 
   function handleSaveClientInfo() {
-    useLocalStorage(formData);
+    saveOnLocalStorage(formData);
     alert('Cliente salvo cria');
-    // window.location.reload();
+    window.location.reload();
   }
 
   function PageDisplay() {

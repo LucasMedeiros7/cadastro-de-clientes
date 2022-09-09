@@ -14,18 +14,6 @@ export function SignUp({ formData, setFormData }) {
           />
         </div>
 
-        <div className={styles.inputEmail}>
-          <label htmlFor="email">E-mail:</label>
-          <input
-            type="email"
-            id="email"
-            value={formData.email}
-            onChange={e => setFormData({ ...formData, email: e.target.value })}
-          />
-        </div>
-      </div>
-
-      <div className={styles.leftSideInput}>
         <div className={styles.inputLastname}>
           <label htmlFor="lastname">Sobrenome:</label>
           <input
@@ -35,6 +23,18 @@ export function SignUp({ formData, setFormData }) {
             onChange={e =>
               setFormData({ ...formData, lastname: e.target.value })
             }
+          />
+        </div>
+      </div>
+
+      <div className={styles.leftSideInput}>
+        <div className={styles.inputEmail}>
+          <label htmlFor="email">E-mail:</label>
+          <input
+            type="email"
+            id="email"
+            value={formData.email}
+            onChange={e => setFormData({ ...formData, email: e.target.value })}
           />
         </div>
 

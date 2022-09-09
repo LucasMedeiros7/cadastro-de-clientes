@@ -3,22 +3,29 @@ import { createContext, useState } from 'react';
 export const clientContext = createContext();
 
 export function ClientProvider({ children }) {
-  const [clientsData, setClientsData] = useState([]);
+  const saveOnLocalStorage = newClient => {
+    let clientStorage = JSON.parse(localStorage.getItem('clients-Storage'));
 
-  function useLocalStorage(newClient) {
-    let storage = JSON.parse(localStorage.getItem('clients-Storage'));
-
-    if (!storage) {
-      storage = [];
+    if (!clientStorage) {
+      clientStorage = [];
     }
 
-    setClientsData(() => [...storage, newClient]);
+    clientStorage.push(newClient);
+    localStorage.setItem('clients-Storage', JSON.stringify(clientStorage));
+  };
 
-    localStorage.setItem('clients-Storage', JSON.stringify(clientsData));
-  }
+  const useLocalStorage = () => {
+    let clientStorage = JSON.parse(localStorage.getItem('clients-Storage'));
+
+    if (!clientStorage) {
+      clientStorage = [];
+    }
+
+    return clientStorage;
+  };
 
   return (
-    <clientContext.Provider value={{ useLocalStorage }}>
+    <clientContext.Provider value={{ saveOnLocalStorage, useLocalStorage }}>
       {children}
     </clientContext.Provider>
   );

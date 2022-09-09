@@ -26,7 +26,7 @@
   height: 3.25rem;
 }
 
-.inputLastname input,
+.inputEmail input,
 .inputStreet input {
   width: 19.375rem;
 }
@@ -36,8 +36,8 @@
 .inputDistrict,
 .inputStreet,
 .inputName,
-.inputEmail,
 .inputLastname,
+.inputEmail,
 .inputPhone div {
   display: flex;
   flex-direction: column;
@@ -83,7 +83,7 @@
   .inputCEP input,
   .inputDistrict input,
   .inputName input,
-  .inputEmail input {
+  .inputLastname input {
     width: 19.375rem;
   }
 }
