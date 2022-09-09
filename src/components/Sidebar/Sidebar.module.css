@@ -1,0 +1,57 @@
+.wrapper {
+  background-color: #202024;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.5rem;
+  border-radius: 5px;
+}
+
+.wrapper header {
+  margin-top: 4rem;
+}
+
+.wrapper footer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8.12rem;
+  gap: 3.75rem;
+}
+
+.wrapper footer .link {
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.625rem;
+  color: #fff;
+  background-color: #00875f;
+  border: none;
+  border-radius: 5px;
+  padding: 1.31rem 2.5rem;
+  cursor: pointer;
+
+  transition: 0.15s;
+}
+
+.wrapper footer .link:hover {
+  background-color: #32af80;
+}
+
+/* .link {
+  width: max-content;
+  height: max-content;
+} */
+
+@media (max-width: 789px) {
+  .wrapper header .UserSvg {
+    display: none;
+  }
+
+  .wrapper header {
+    margin: 0;
+  }
+
+  .wrapper footer {
+    margin-bottom: 2.9rem;
+    gap: 2rem;
+  }
+}

@@ -1,0 +1,89 @@
+.formSingUp {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rightSideInput,
+.leftSideInput {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.formSingUp label {
+  font-size: 1.125rem;
+  margin-bottom: 0.375rem;
+}
+
+.formSingUp input {
+  padding-left: 1rem;
+  padding-right: 0.8rem;
+  background-color: #ddd;
+  border: none;
+  border-radius: 5px;
+  width: 14rem;
+  height: 3.25rem;
+}
+
+.inputLastname input,
+.inputStreet input {
+  width: 19.375rem;
+}
+
+.inputCEP,
+.inputBirthDate,
+.inputDistrict,
+.inputStreet,
+.inputName,
+.inputEmail,
+.inputLastname,
+.inputPhone div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputPhone,
+.inputCity {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.inputCity div {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputPhone div:first-child input,
+.inputCity div:last-child input {
+  width: 4.563rem;
+}
+
+.inputBirthDate {
+  margin-top: -5.938rem;
+}
+
+@media (max-width: 789px) {
+  .inputBirthDate {
+    margin-top: 0;
+  }
+
+  .formSingUp {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .formSingUp,
+  .rightSideInput,
+  .leftSideInput {
+    gap: 0.75rem;
+  }
+
+  .inputBirthDate input,
+  .inputCEP input,
+  .inputDistrict input,
+  .inputName input,
+  .inputEmail input {
+    width: 19.375rem;
+  }
+}

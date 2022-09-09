@@ -1,0 +1,38 @@
+.container {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 366px 1fr;
+  gap: 2.5rem;
+
+  max-width: 1320px;
+  width: 90%;
+  height: 100vh;
+
+  margin: 0 auto;
+}
+
+.section {
+  height: 41.12rem;
+  background-color: #202024;
+  color: white;
+  border-radius: 8px;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 90%;
+    grid-template-columns: 1fr;
+    height: auto;
+    padding: 3.125rem 0;
+  }
+}
+
+@media (max-width: 832px) {
+  .container {
+    width: 100%;
+  }
+
+  html {
+    font-size: 85.5%;
+  }
+}
