@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { clientContext } from '../../context/clientContext';
 
 import { SignUp } from './SignUp';
 import { Address } from './Address';
@@ -7,6 +8,7 @@ import { PersonalInfo } from './PersonalInfo';
 import styles from './styles/Form.module.css';
 
 export function Form() {
+  const { useLocalStorage } = useContext(clientContext);
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
@@ -20,9 +22,28 @@ export function Form() {
     district: '',
     street: '',
     CPF: '',
-    bithDate: '',
+    birthDate: '',
     income: '',
   });
+
+  const checkAndAlert = (...values) => values.some(value => value === '');
+
+  function checkIfInputIsFilled() {
+    if (page === 0) {
+      const { name, lastname, email, ddd, phone } = formData;
+      return checkAndAlert(name, lastname, email, ddd, phone);
+    }
+
+    if (page === 1) {
+      const { CEP, city, UF, district, street } = formData;
+      return checkAndAlert(CEP, city, UF, district, street);
+    }
+
+    if (page === 2) {
+      const { CPF, bithDate, income } = formData;
+      return checkAndAlert(CPF, bithDate, income);
+    }
+  }
 
   function handlePageChange(event) {
     if (event.target.textContent === 'Próximo') {
@@ -36,6 +57,12 @@ export function Form() {
     }
   }
 
+  function handleSaveClientInfo() {
+    useLocalStorage(formData);
+    alert('Cliente salvo cria');
+    // window.location.reload();
+  }
+
   function PageDisplay() {
     switch (page) {
       case 0:
@@ -47,7 +74,37 @@ export function Form() {
     }
   }
 
-  const isLastPage = page === 2 ? 'Salvar' : 'Próximo';
+  function NextButton() {
+    if (page < 2) {
+      return (
+        <button
+          title={
+            checkIfInputIsFilled()
+              ? 'Preencha todos os campos'
+              : 'Próxima página'
+          }
+          disabled={checkIfInputIsFilled()}
+          onClick={handlePageChange}
+        >
+          Próximo
+        </button>
+      );
+    } else {
+      return (
+        <button
+          title={
+            checkIfInputIsFilled()
+              ? 'Preencha todos os campos'
+              : 'Salvar informações do cliente'
+          }
+          disabled={checkIfInputIsFilled()}
+          onClick={handleSaveClientInfo}
+        >
+          Salvar
+        </button>
+      );
+    }
+  }
 
   return (
     <div className={styles.form}>
@@ -57,7 +114,8 @@ export function Form() {
         <button disabled={page === 0} onClick={handlePageChange}>
           Voltar
         </button>
-        <button onClick={handlePageChange}>{isLastPage}</button>
+
+        {NextButton()}
       </div>
     </div>
   );
