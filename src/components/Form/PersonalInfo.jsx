@@ -14,7 +14,7 @@ export function PersonalInfo({ formData, setFormData }) {
           />
         </div>
 
-        <div className={styles.inputEmail}>
+        <div className={styles.inputLastname}>
           <label htmlFor="income">Renda mensal:</label>
           <input
             type="number"

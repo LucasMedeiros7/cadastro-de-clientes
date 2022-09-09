@@ -49,15 +49,15 @@ export function Form() {
     if (event.target.textContent === 'Próximo') {
       setPage(currPage => currPage + 1);
       return;
-    }
-
-    if (event.target.textContent === 'Voltar') {
+    } else if (event.target.textContent === 'Voltar') {
       setPage(currPage => currPage - 1);
       return;
+    } else {
+      saveClientInfo();
     }
   }
 
-  function handleSaveClientInfo() {
+  function saveClientInfo() {
     saveOnLocalStorage(formData);
     alert('Cliente salvo cria');
     window.location.reload();
@@ -74,38 +74,6 @@ export function Form() {
     }
   }
 
-  function NextButton() {
-    if (page < 2) {
-      return (
-        <button
-          title={
-            checkIfInputIsFilled()
-              ? 'Preencha todos os campos'
-              : 'Próxima página'
-          }
-          disabled={checkIfInputIsFilled()}
-          onClick={handlePageChange}
-        >
-          Próximo
-        </button>
-      );
-    } else {
-      return (
-        <button
-          title={
-            checkIfInputIsFilled()
-              ? 'Preencha todos os campos'
-              : 'Salvar informações do cliente'
-          }
-          disabled={checkIfInputIsFilled()}
-          onClick={handleSaveClientInfo}
-        >
-          Salvar
-        </button>
-      );
-    }
-  }
-
   return (
     <div className={styles.form}>
       <div className={styles.fields}>{PageDisplay()}</div>
@@ -115,7 +83,9 @@ export function Form() {
           Voltar
         </button>
 
-        {NextButton()}
+        <button disabled={checkIfInputIsFilled()} onClick={handlePageChange}>
+          {page === 2 ? 'Salvar' : 'Próximo'}
+        </button>
       </div>
     </div>
   );
