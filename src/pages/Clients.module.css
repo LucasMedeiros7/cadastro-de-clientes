@@ -18,8 +18,17 @@
 }
 
 .clientsContainer main {
+  position: relative;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+  align-items: flex-start;
+  gap: 26px;
+  padding: 2rem 1.2rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 832px) {
+  .clientsContainer main {
+    overflow-x: scroll;
+    justify-content: center;
+  }
 }

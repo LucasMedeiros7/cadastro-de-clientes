@@ -59,7 +59,7 @@ export function Form() {
 
   function saveClientInfo() {
     saveOnLocalStorage(formData);
-    alert('Cliente salvo cria');
+    alert('Cliente salvo com sucesso');
     window.location.reload();
   }
 

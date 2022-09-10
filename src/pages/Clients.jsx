@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
+import { Card } from '../components/Card/Card';
 import { clientContext } from '../context/clientContext';
 import styles from './Clients.module.css';
 
 export function Clients() {
-  const [clients, setClients] = useState(null);
   const { useLocalStorage } = useContext(clientContext);
+  const [clients, setClients] = useState(null);
 
   useEffect(() => {
     const clientsAlreadyRegistred = useLocalStorage();
@@ -20,10 +21,9 @@ export function Clients() {
         <h1>Lista de clientes</h1>
       </header>
       <main>
-        <h1>clientes</h1>
-        {clients?.map(client => {
-          return <p>{client.name}</p>;
-        }) || <p>nenhum cliente cadastrado</p>}
+        {clients?.map((client, index) => {
+          return <Card key={index} client={client} index={index} />;
+        }) || <h1>Nenhum cliente cadastrado</h1>}
       </main>
     </div>
   );

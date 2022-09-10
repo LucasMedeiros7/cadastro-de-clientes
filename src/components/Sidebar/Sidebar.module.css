@@ -36,11 +36,6 @@
   background-color: #32af80;
 }
 
-/* .link {
-  width: max-content;
-  height: max-content;
-} */
-
 @media (max-width: 789px) {
   .wrapper header .UserSvg {
     display: none;

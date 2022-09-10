@@ -34,5 +34,6 @@
 
   html {
     font-size: 85.5%;
+    overflow-x: hidden;
   }
 }
